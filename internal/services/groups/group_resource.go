@@ -3,6 +3,7 @@ package groups
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"github.com/hashicorp/go-uuid"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
@@ -101,6 +102,7 @@ func groupResource() *schema.Resource {
 }
 
 func groupResourceCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	log.Printf("[TEST-DEBUG] groupResourceCreate %v..", meta.(*clients.Client).EnableMsGraphBeta)
 	if meta.(*clients.Client).EnableMsGraphBeta {
 		return groupResourceCreateMsGraph(ctx, d, meta)
 	}
@@ -108,6 +110,7 @@ func groupResourceCreate(ctx context.Context, d *schema.ResourceData, meta inter
 }
 
 func groupResourceRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	log.Printf("[TEST-DEBUG] groupResourceRead %v..", meta.(*clients.Client).EnableMsGraphBeta)
 	if meta.(*clients.Client).EnableMsGraphBeta {
 		return groupResourceReadMsGraph(ctx, d, meta)
 	}
