@@ -2,7 +2,6 @@ package groups
 
 import (
 	"context"
-	"log"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -79,7 +78,6 @@ func groupDataSource() *schema.Resource {
 }
 
 func groupDataSourceRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	log.Printf("[TEST-DEBUG] groupDataSourceRead %v..", meta.(*clients.Client).EnableMsGraphBeta)
 	if meta.(*clients.Client).EnableMsGraphBeta {
 		return groupDataSourceReadMsGraph(ctx, d, meta)
 	}
