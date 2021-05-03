@@ -36,6 +36,18 @@ resource "azuread_service_principal" "example" {
 }
 ```
 
+## Enabling MS Graph API usage
+
+```hcl
+# Configure the Microsoft Azure Active Directory Provider to use MS Graph API instead of the legacy Azure Active Directory Graph API, where supported.
+provider "azuread" {
+  version = "=0.7.0"
+  
+  use_microsoft_graph=true
+}
+
+```
+
 ## Features and Bug Requests
 
 The Azure Active Directory provider's bugs and feature requests can be found in the [GitHub repo issues](https://github.com/hashicorp/terraform-provider-azuread/issues).
@@ -76,6 +88,8 @@ The following arguments are supported:
 * `environment` - (Optional) The Cloud Environment which be used. Possible values are `public`, `usgovernment`, `german` and `china`. Defaults to `public`. This can also be sourced from the `ARM_ENVIRONMENT` environment variable.
 
 * `tenant_id` - (Optional) The Tenant ID which should be used. This can also be sourced from the `ARM_TENANT_ID` Environment Variable.
+
+* `use_microsoft_graph` - (Optional) Configure the provider to use MS Graph API instead of the legacy Azure Active Directory Graph API, where supported. This can also be sourced from the `AAD_USE_MICROSOFT_GRAPH` Environment Variable.
 
 ---
 

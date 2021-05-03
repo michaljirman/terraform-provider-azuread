@@ -38,6 +38,12 @@ func groupResourceCreateMsGraph(ctx context.Context, d *schema.ResourceData, met
 		}
 	}
 
+	isAssignableToRole := false
+	if v := d.Get("is_assignable_to_role").(bool); v {
+		isAssignableToRole = v
+	}
+	tf.Set(d, "is_assignable_to_role", isAssignableToRole)
+
 	mailNickname, err := uuid.GenerateUUID()
 	if err != nil {
 		return tf.ErrorDiagF(err, "Failed to generate mailNickname")
@@ -48,8 +54,9 @@ func groupResourceCreateMsGraph(ctx context.Context, d *schema.ResourceData, met
 		MailNickname: utils.String(mailNickname),
 
 		// API only supports creation of security groups
-		SecurityEnabled: utils.Bool(true),
-		MailEnabled:     utils.Bool(false),
+		SecurityEnabled:    utils.Bool(true),
+		MailEnabled:        utils.Bool(false),
+		IsAssignableToRole: utils.Bool(isAssignableToRole),
 	}
 
 	if v, ok := d.GetOk("description"); ok {

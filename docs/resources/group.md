@@ -45,9 +45,10 @@ The following arguments are supported:
 * `members` - (Optional) A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 * `owners` - (Optional) A set of owners who own this Group. Supported Object types are Users or Service Principals.
 * `prevent_duplicate_names` - (Optional) If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+* `is_assignable_to_role` - (Optional) If `true`, will enable roles assignments for this group. Defaults to `false`.
 
+!> **NOTE:** Argument `is_assignable_to_role` is supported only if use of MS Graph API is enabled.
 -> **NOTE:** Group names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing groups.
-
 !> **NOTE:** Do not use the `azuread_group_member` resource at the same time as the `members` argument.
 
 ## Attributes Reference
