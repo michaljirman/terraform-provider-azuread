@@ -47,7 +47,7 @@ The following arguments are supported:
 * `prevent_duplicate_names` - (Optional) If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
 * `is_assignable_to_role` - (Optional) If `true`, will enable roles assignments for this group. Defaults to `false`.
 
-!> **NOTE:** Argument `is_assignable_to_role` is supported only if use of MS Graph API is enabled.
+-> **NOTE:** Argument `is_assignable_to_role` is supported only if use of MS Graph API is enabled.
 
 -> **NOTE:** Group names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing groups.
 
