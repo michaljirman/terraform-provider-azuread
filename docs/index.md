@@ -36,7 +36,7 @@ resource "azuread_service_principal" "example" {
 }
 ```
 
-## Enabling MS Graph API usage
+## Enable MS Graph API
 
 ```hcl
 # Configure the Microsoft Azure Active Directory Provider to use MS Graph API instead of the legacy Azure Active Directory Graph API, where supported.
